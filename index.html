@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Namaste React</title>
+    <link rel="stylesheet" href="./index.css"/>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- render method will replace this completely -->
+        <h1>Nikhil is here</h1>
+        <h1>Nikhil is here</h1>
+        <h1>Nikhil is here</h1>
+    </div>
     <script 
         crossorigin
         src="https://unpkg.com/react@18/umd/react.development.js">
@@ -15,11 +21,6 @@
         crossorigin
         src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
     </script>
-
-    <script>
-        var heading = React.createElement('h1', {}, 'Hello World From React!');
-        var root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(heading);
-    </script>
+    <script src="./App.js"></script>
 </body>
 </html>
