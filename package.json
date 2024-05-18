@@ -1,0 +1,22 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste react repository",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clasher3531/Namaste-React.git"
+  },
+  "author": "Nikhil Joshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clasher3531/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/clasher3531/Namaste-React#readme",
+  "dependencies": {
+    "parcel": "^2.12.0"
+  }
+}
