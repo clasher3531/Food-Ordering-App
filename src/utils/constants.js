@@ -1,0 +1,3 @@
+export const LOGO_IMG = "https://img.icons8.com/color/48/food-bar.png";
+export const RES_IMG_URL =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
