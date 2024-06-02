@@ -17,12 +17,8 @@ const Search = ({
     setInputVal(event.target.value);
   }
   function searchButtonClickHandler() {
-    var inputValLength = inputVal.length;
     let filteredList = InitialListOfResturants.filter((resturant) => {
-      return (
-        resturant.info.name.substring(0, inputValLength).toLowerCase() ===
-        inputVal.toLowerCase()
-      );
+      return resturant.info.name.toLowerCase().includes(inputVal.toLowerCase());
     });
     setListOfResturant(filteredList);
   }
