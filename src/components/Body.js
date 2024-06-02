@@ -1,53 +1,44 @@
 import ResturantCard from "./ResturantCard";
-import resList from "../utils/mockData";
-import { useState } from "react";
+import Shimmer from "./Shimmer";
+import Search from "./Search";
+import { useState, useEffect } from "react";
 
 const Body = () => {
-  const [listOfResturant, setListOfResturant] = useState(resList);
-  const [inputVal, setInputVal] = useState("");
-  function topRatedBtnClickHandler() {
-    let filteredList = listOfResturant.filter(
-      (resturant) => resturant.info.avgRating > 4.2
+  var [InitialListOfResturants, setInitialListOfResturants] = useState([]);
+  const [listOfResturant, setListOfResturant] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    var data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.18260&lng=78.02560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
-    setListOfResturant(filteredList);
-  }
-  function changeInputHandler(event) {
-    setInputVal(event.target.value);
-  }
-  function searchButtonClickHandler() {
-    var inputValLength = inputVal.length;
-    let filteredList = resList.filter((resturant) => {
-      return (
-        resturant.info.name.substring(0, inputValLength).toLowerCase() ===
-        inputVal.toLowerCase()
-      );
-    });
-    setListOfResturant(filteredList);
-  }
+    var dataJson = await data.json();
+    InitialListOfResturants =
+      dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setListOfResturant(InitialListOfResturants);
+    setInitialListOfResturants(InitialListOfResturants);
+  };
+
   return (
     <div className="body">
-      <div className="search">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search Resturants"
-          value={inputVal}
-          onChange={changeInputHandler}
-        ></input>
-        <div className="search-button">
-          <button type="submit" onClick={searchButtonClickHandler}>
-            Search
-          </button>
+      <Search
+        InitialListOfResturants={InitialListOfResturants}
+        listOfResturant={listOfResturant}
+        setListOfResturant={setListOfResturant}
+      />
+      {listOfResturant.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="res-list">
+          {listOfResturant.map((resturant) => (
+            <ResturantCard key={resturant.info.id} resData={resturant} />
+          ))}
         </div>
-      </div>
-      <button className="top-rated-btn" onClick={topRatedBtnClickHandler}>
-        Top rated Resturants
-      </button>
-      <div className="res-list">
-        {listOfResturant.map((resturant) => (
-          <ResturantCard key={resturant.info.id} resData={resturant} />
-        ))}
-      </div>
+      )}
     </div>
   );
 };
