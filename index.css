@@ -57,8 +57,8 @@
   background-color: #f0f0f0;
 }
 
-.res-card :hover {
-  border: 1px solid black;
+.res-card:hover {
+  border: 1px solid grey;
 }
 
 .res-img {
@@ -84,6 +84,15 @@
 .top-rated-btn {
   padding: 8px;
   margin-left: 10px;
+  background-color: bisque;
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  background-color: bisque;
+  border: none;
+  cursor: pointer;
 }
 
 .shimmer-container {
@@ -100,4 +109,52 @@
 
 .login {
   width: 70px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.res-info-main {
+  text-align: center;
+}
+
+.res-info-main li {
+  list-style-type: none;
+}
+
+.rating {
+  color: green;
+  font-weight: bolder;
+}
+
+.menu-list-main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-description-section {
+  width: 70%;
+}
+
+.menu-image-section {
+  width: 30%;
+}
+
+.menu-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: red;
+}
+
+.description {
+  color: grey;
+}
+
+.res-name-section {
+  width: 100%;
+  height: 200px;
+  margin: 10px;
+  background-color: #f0f0f0;
 }
