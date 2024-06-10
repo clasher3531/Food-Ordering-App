@@ -18,11 +18,15 @@ const RestaurantMenuList = (props) => {
             <p className="description">{props.list.description}</p>
           </div>
           <div className="menu-image-section">
-            <img
-              src={MENU_IMG_URL + props.list.imageId}
-              width="200px"
-              height="200px"
-            ></img>
+            {props.list.imageId ? (
+              <img
+                src={MENU_IMG_URL + props.list.imageId}
+                width="200px"
+                height="200px"
+              ></img>
+            ) : (
+              <div className="image-replica"></div>
+            )}
           </div>
         </div>
       </li>

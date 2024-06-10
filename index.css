@@ -230,3 +230,10 @@ input:checked + .slider:before {
   display: flex;
   justify-content: center;
 }
+
+.image-replica {
+  margin-left: 93px;
+  width: 200px;
+  height: 200px;
+  background-color: #f0f0f0;
+}
