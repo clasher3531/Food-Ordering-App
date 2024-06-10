@@ -1,7 +1,6 @@
 import { MENU_IMG_URL } from "../utils/constants";
 
 const RestaurantMenuList = (props) => {
-  console.log(props.list);
   return (
     <div className="menu-list">
       <li>
