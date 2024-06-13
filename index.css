@@ -237,3 +237,20 @@ input:checked + .slider:before {
   height: 200px;
   background-color: #f0f0f0;
 }
+
+.user-card {
+  padding: 10px;
+  border: 1px solid gray;
+  width: 300px;
+  margin: 10px;
+}
+
+.user-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.avatar-img {
+  width: 100%;
+}
