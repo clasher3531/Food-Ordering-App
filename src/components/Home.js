@@ -1,29 +1,19 @@
 import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import Search from "./Search";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useRestaurantList from "../utils/useRestaurantList";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import OfflinePage from "./OfflinePage";
 
-const Body = () => {
-  var [InitialListOfResturants, setInitialListOfResturants] = useState([]);
-  const [listOfResturant, setListOfResturant] = useState([]);
+const Home = () => {
+  const [listOfResturant, InitialListOfResturants, setListOfResturant] =
+    useRestaurantList();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    var data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.18260&lng=78.02560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    var dataJson = await data.json();
-    InitialListOfResturants =
-      dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    setListOfResturant(InitialListOfResturants);
-    setInitialListOfResturants(InitialListOfResturants);
-  };
-
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return <OfflinePage />;
+  }
   return (
     <div className="body">
       <Search
@@ -49,4 +39,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default Home;

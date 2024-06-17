@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { LOGO_IMG } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   function btnClickHandler() {
     btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
   }
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header">
       <img
@@ -19,6 +21,9 @@ const Header = () => {
       <div className="company-name">Namaste Food</div>
       <ul className="header-ul">
         <li className="header-li">
+          Online Status: {onlineStatus ? "🟢" : "🔴"}
+        </li>
+        <li className="header-li">
           <Link to="/">Home</Link>
         </li>
         <li className="header-li">
@@ -26,6 +31,9 @@ const Header = () => {
         </li>
         <li className="header-li">
           <Link to="/Contact">Contact Us</Link>
+        </li>
+        <li className="header-li">
+          <Link to="/grocery">Grocery</Link>
         </li>
         <li className="header-li">Cart</li>
         <button className="login" onClick={btnClickHandler}>
