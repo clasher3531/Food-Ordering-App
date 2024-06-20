@@ -1,12 +1,13 @@
 import React from "react";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import UserContext from "../utils/UserContext";
 const Search = ({
   InitialListOfResturants,
   listOfResturant,
   setListOfResturant,
 }) => {
   const [inputVal, setInputVal] = useState("");
+  const { userLoggedIn, setUserName } = useContext(UserContext);
   function topRatedBtnClickHandler() {
     let filteredList = listOfResturant.filter(
       (resturant) => resturant.info.avgRating > 4.2
@@ -22,6 +23,7 @@ const Search = ({
     });
     setListOfResturant(filteredList);
   }
+
   return (
     <React.Fragment>
       <div className="search">
@@ -41,6 +43,10 @@ const Search = ({
       <button className="top-rated-btn" onClick={topRatedBtnClickHandler}>
         Top rated Resturants
       </button>
+      <input
+        value={userLoggedIn}
+        onChange={(e) => setUserName(e.target.value)}
+      ></input>
     </React.Fragment>
   );
 };

@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
-import RestaurantMenuList from "./RestaurantMenuList";
+import Accordian from "./Accordian";
 import ShimmerResInfo from "./ShimmerResInfo";
 import useRestaurantInfo from "../utils/useRestaurantInfo";
+import { useState } from "react";
 
 const RestaurantInfo = () => {
   const { resId } = useParams();
+  const [indexActive, setIndexActive] = useState(2);
 
   const [clonedResponse, isVegCheck, vegOnlyChangeHandler] =
     useRestaurantInfo(resId);
@@ -40,16 +42,13 @@ const RestaurantInfo = () => {
         const menus = menuCard?.card?.card?.itemCards;
         if (menus && menus.length > 0) {
           return (
-            <ul key={index}>
-              <h2 className="menu-title">{menuCard.card.card.title}</h2>
-              <br></br>
-              {menus.map((menu) => (
-                <RestaurantMenuList
-                  key={menu.card.info.id}
-                  list={menu.card.info}
-                />
-              ))}
-            </ul>
+            <Accordian
+              key={menuCard.card.card.title}
+              menuCard={menuCard}
+              menus={menus}
+              showList={index == indexActive ? true : false}
+              setIndexActive={(val) => setIndexActive(val ? val : index)}
+            />
           );
         }
       })}

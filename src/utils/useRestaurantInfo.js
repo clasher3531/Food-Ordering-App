@@ -3,6 +3,7 @@ import { RES_INFO_URL } from "./constants";
 
 const useRestaurantInfo = (resId) => {
   const [resInfo, setResInfo] = useState(null);
+  const [isListHidden, setListHidden] = useState(false);
   const [clonedResponse, setClonedResponse] = useState(null);
   const [isVegCheck, setIsVegCheck] = useState(false);
   useEffect(() => {
@@ -41,7 +42,13 @@ const useRestaurantInfo = (resId) => {
     }
   };
 
-  return [clonedResponse, isVegCheck, vegOnlyChangeHandler];
+  return [
+    clonedResponse,
+    isVegCheck,
+    vegOnlyChangeHandler,
+    isListHidden,
+    setListHidden,
+  ];
 };
 
 export default useRestaurantInfo;

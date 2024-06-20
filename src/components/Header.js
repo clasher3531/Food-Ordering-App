@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { LOGO_IMG } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
+  const { userLoggedIn } = useContext(UserContext);
   function btnClickHandler() {
     btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
   }
@@ -35,7 +37,7 @@ const Header = () => {
         <li className="header-li">
           <Link to="/grocery">Grocery</Link>
         </li>
-        <li className="header-li">Cart</li>
+        <li className="header-li">User: {userLoggedIn}</li>
         <button className="login" onClick={btnClickHandler}>
           {btnName}
         </button>

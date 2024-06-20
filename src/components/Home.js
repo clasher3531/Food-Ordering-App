@@ -1,4 +1,4 @@
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withPureVeg } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import Search from "./Search";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ const Home = () => {
     useRestaurantList();
 
   const onlineStatus = useOnlineStatus();
+  const RestaurantCardWithVeg = withPureVeg(ResturantCard);
   if (!onlineStatus) {
     return <OfflinePage />;
   }
@@ -30,7 +31,11 @@ const Home = () => {
               key={resturant.info.id}
               to={"restaurant/" + resturant.info.id}
             >
-              <ResturantCard resData={resturant} />
+              {resturant.info.veg ? (
+                <RestaurantCardWithVeg resData={resturant} />
+              ) : (
+                <ResturantCard resData={resturant} />
+              )}
             </Link>
           ))}
         </div>

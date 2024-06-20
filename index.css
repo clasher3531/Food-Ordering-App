@@ -87,6 +87,7 @@
   background-color: bisque;
   border: none;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 button {
@@ -145,7 +146,7 @@ a {
 .menu-title {
   margin-top: 30px;
   margin-bottom: 10px;
-  color: red;
+  color: black;
 }
 
 .description {
@@ -263,4 +264,37 @@ input:checked + .slider:before {
 .oops-text {
   font-weight: bolder;
   font-size: 90px;
+}
+
+.veg_label {
+  position: absolute;
+  background-color: green;
+  color: white;
+  margin-left: 20px;
+  padding: 6px;
+}
+
+.menu-title {
+  width: 100%;
+  background-color: #f0f0f0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 30px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.arrow {
+  float: right;
+  margin-right: 15px;
+}
+
+.add-button {
+  position: absolute;
+  width: 75px;
+  height: 30px;
+  margin-top: 150px;
+  margin-left: 60px;
+  font-weight: bolder;
+  background-color: #f0f0f0;
 }
