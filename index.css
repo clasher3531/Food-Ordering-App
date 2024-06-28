@@ -298,3 +298,19 @@ input:checked + .slider:before {
   font-weight: bolder;
   background-color: #f0f0f0;
 }
+
+.cart-main {
+  text-align: center;
+  margin-left: 15rem;
+  margin-right: 15rem;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.empty-cart {
+  font-size: larger;
+  font-weight: bolder;
+  margin-bottom: 3rem;
+}

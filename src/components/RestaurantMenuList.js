@@ -1,6 +1,12 @@
 import { MENU_IMG_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItems } from "../utils/store/cartSlice";
 
 const RestaurantMenuList = (props) => {
+  const dispatch = useDispatch();
+  const addButtonClickHandler = (list) => {
+    dispatch(addItems(list));
+  };
   return (
     <li className="list">
       <div className="menu-list-main">
@@ -17,7 +23,16 @@ const RestaurantMenuList = (props) => {
           <p className="description">{props.list.description}</p>
         </div>
         <div className="menu-image-section">
-          <button className="add-button">+ Add</button>
+          {props.isCartPage ? (
+            ""
+          ) : (
+            <button
+              className="add-button"
+              onClick={() => addButtonClickHandler(props.list)}
+            >
+              + Add
+            </button>
+          )}
           {props.list.imageId ? (
             <img
               src={MENU_IMG_URL + props.list.imageId}
